@@ -2,6 +2,7 @@ from django.urls import path
 
 from .views import (
     CreateGameBySizeView,
+    CheckWordView,          
     DictionaryLanguagesView,
     DeleteGameView,
     DeleteLeaderBoardEntryView,
@@ -17,6 +18,7 @@ from .views import (
     PlayerSessionStartView,
     PlayerSessionWordsView,
     RegisterView,
+    RevealWordsView,        
 )
 
 urlpatterns = [
@@ -40,6 +42,8 @@ urlpatterns = [
     # Extras
     path("games/<uuid:id>/join/", JoinGameView.as_view(), name="game-join"),
     path("games/<uuid:id>/words/", GameWordsView.as_view(), name="game-words"),
+    path("games/<uuid:id>/check/", CheckWordView.as_view(), name="game-check"),
+    path("games/<uuid:id>/reveal/", RevealWordsView.as_view(), name="game-reveal"),
     path("sessions/<int:player_id>/start/", PlayerSessionStartView.as_view(),
          name="session-start"),
     path("sessions/<int:player_id>/words/", PlayerSessionWordsView.as_view(),
